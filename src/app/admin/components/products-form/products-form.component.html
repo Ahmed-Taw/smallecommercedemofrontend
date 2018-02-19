@@ -1,0 +1,48 @@
+<div class="right-div">
+<form #form="ngForm" (ngSubmit)="save()"> 
+  <div class="form-group">
+    <label for="">Title</label>
+    <input required [(ngModel)]="product.title" #titlemodel="ngModel" name="title" type="text" class="form-control">
+    <div *ngIf="!titlemodel.valid && titlemodel.touched"> 
+        <div class="alert alert-danger">this field is required </div>
+      </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="">Price</label>
+    <div class="input-group mb-3">
+         <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+        <input required type="number" [(ngModel)]="product.price" #pricemodel="ngModel" name ="price" class="form-control">
+      </div>
+      <div *ngIf="!pricemodel.valid && pricemodel.touched"> 
+          <div class="alert alert-danger">this field is required </div>
+        </div>
+  </div>
+
+<div class="form-group">
+    <label for="">Category</label>
+    <select class="form-control" [(ngModel)]="product.categoryId" name="categoryId">
+      <option value=""></option>
+     <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+    </select>
+</div>
+ 
+<div class="form-group">
+    <label for="">Image Url</label>
+    <input required type="text" [(ngModel)]="product.image" #imageModel="ngModel" name="image" class="form-control">
+    <div *ngIf="!imageModel.valid && imageModel.touched"> 
+        <div class="alert alert-danger">this field is required </div>
+      </div>
+  </div>
+
+ 
+<button class="btn btn-primary" type="submit" [disabled]="!form.valid">Save</button>
+<button class="btn btn-secondary" type="button" *ngIf="id" (click)="delete()">Delete</button>
+</form>
+</div>
+
+<div class="left-div">
+      <app-product-card [product]="product"></app-product-card>
+</div>

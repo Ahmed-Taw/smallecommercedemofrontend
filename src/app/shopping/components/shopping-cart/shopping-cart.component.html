@@ -1,0 +1,40 @@
+<div>
+<h3>
+Check you shopping cart 
+</h3>
+<p>
+  you have {{totalitems | async}} items in your shopping cart 
+</p>
+</div>
+<table class="table">
+  <thead>  
+    <tr>
+      <th scope="col">Product Image</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <th scope="col">Total</th>
+    <td scope="col"></td>
+    <td scope="col"></td>
+    <th scope="col">{{totalamount | async | currency:USD:"symbol"}}</th>
+  </tfoot>
+  <tbody>
+      <tr *ngFor="let cartItemRecord of cartItems|async" style="height:20px;">
+          <td><img [src]="cartItemRecord.product.image" alt="Product Image" class="avatar"></td>
+          <td>{{cartItemRecord.product.title}}</td>
+          <td>
+            <app-productquantity [product]="cartItemRecord.product" [smalltextarea]="true">
+            </app-productquantity>
+          </td>
+          <td>{{(cartItemRecord.quantity * cartItemRecord.product.price) | currency:USD:"symbol"}}</td>
+        </tr>
+  </tbody>
+  </table>
+  <div>
+      <a class="btn btn-primary" routerLink="/CheckOut" [class.disabled]="(totalitems | async)==0">Check out</a>
+      <button class="btn btn-danger" (click)="clearshoppingCart()" [disabled]="(totalitems | async)==0">Clear Shopping Cart</button>    
+  </div>
+  

@@ -1,0 +1,5 @@
+<div class="row text-center">
+    <button class="btn btn-secondry col-2" (click)="removeFromCart()">-</button>
+    <div class="cancelpadding" [class.col-5]="smalltextarea" [class.col]="largetextarea">{{cartItem.quantity }} in cart</div>
+    <button  class="btn btn-secondry col-2" (click)="addToCart()">+</button>
+</div>

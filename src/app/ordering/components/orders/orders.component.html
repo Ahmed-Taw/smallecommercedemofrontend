@@ -1,0 +1,30 @@
+<div>
+  <h3>
+  Orders history
+  </h3>
+  <p>
+    this is  your orders history 
+  </p>
+  </div>
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link btn" (click)="filterdata()" 
+      [class.active]="showActiveOrders"
+      >Active Orders</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link btn" (click)="filterdata()" [class.active]="!showActiveOrders">Deliverd Orders</a>
+    </li>
+  </ul>
+<table class="table">
+  <thead>
+    <th>Order Date</th>
+    <th>Order name</th>
+    <th>Order address</th>
+  </thead>
+  <tr *ngFor="let order of filterdOrders">
+    <td>{{order.creationDate |date }}</td>
+    <td>{{order.name}}</td>
+    <td>{{order.address}}</td>
+  </tr>
+</table>

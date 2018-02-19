@@ -1,0 +1,19 @@
+<!-- <div class="sticky-top"> -->
+<div class="list-group" style="margin-top:15px;">
+    <a 
+    [routerLink]="navigateTo" 
+     class="list-group-item list-group-item-action"
+     [class.active]="!activecategoryid">
+      All Categories
+    </a>
+  <a 
+  *ngFor="let category of categories" 
+  [routerLink]="navigateTo" 
+  [queryParams]="{category:category.id}" 
+   class="list-group-item list-group-item-action"
+   [class.active]="category.id == activecategoryid">
+   {{category.name}}
+  </a>
+</div>
+<!-- </div> -->
+
