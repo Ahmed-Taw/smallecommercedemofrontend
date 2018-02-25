@@ -4,12 +4,32 @@
     </div>
     <div class="col">
        <div class="row" style="margin-top:15px">
-           <ng-container  *ngFor="let product of filterdProducts let i = index">
+           <ng-container  *ngFor="let product of products let i = index">
              <div class="col-4">
+                <a [routerLink]="['/products/',product.id]">
                 <app-product-card showactions="true" [product]="product" ></app-product-card>
-               </div>   
+              </a>
+              <app-product-card-actions [product]="product">
+                </app-product-card-actions>
+              </div>   
            <div *ngIf="(i+1) % 3 === 0" class="w-100 hidden-md-up" style="margin-top:10px"></div>    
        </ng-container>
      </div>
+     
     </div>
    </div>
+   <footer>
+      <div class="row">
+        <div class="col-6">
+
+        </div>
+          <div class="col">
+              <app-pagination [total-items]="totalItems"
+              [page-size]="query.pageSize"
+          (page-changed)="onPageChange($event)">
+          
+          </app-pagination>
+          </div>
+        </div>
+   </footer>
+  

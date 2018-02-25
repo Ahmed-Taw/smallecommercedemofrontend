@@ -2,13 +2,23 @@
  <a routerLink="/admin/products/new" class="btn btn-primary"> Add new Product</a>
 </div>
  <div class="form-group">
-   <input #query  (keyup)="filter(query.value)" type="text" class="form-control">
+   <input (keyup)="filter()" [(ngModel)]="search" name="search" type="text" class="form-control">
   </div>
 
 <table class="table">
   <tr>
-    <th scope="col">Title</th>
-    <th scope="col">Price</th>
+    <th scope="col" (click)="sort('title')">Title
+       <i *ngIf="query.sortBy=='title' && query.isSortAsc" class="fa fa-sort-up">
+       </i>
+       <i *ngIf="query.sortBy=='title' && !query.isSortAsc" class="fa fa-sort-down">
+       </i>
+      </th>
+    <th scope="col" (click)="sort('price')">Price
+        <i *ngIf="query.sortBy=='price' && query.isSortAsc" class="fa fa-sort-up">
+          </i>
+          <i *ngIf="query.sortBy=='price' && !query.isSortAsc" class="fa fa-sort-down">
+          </i>
+    </th>
     <th scope="col">Edit</th>
   </tr>
   <tr *ngFor="let Product of filteredProducts">
@@ -17,4 +27,23 @@
     <td><a [routerLink]="['/admin/products/',Product.id]">Edit</a></td>
   </tr>
 </table>
+<div class="row">
+  <div class="col">
+      <app-pagination [total-items]="totalItems"
+      [page-size]="query.pageSize"
+  (page-changed)="onPageChange($event)">
+  
+  </app-pagination>
+  </div>
+<div class="col-2">
+    <select [(ngModel)]="query.pageSize" name="pageSize" (change)="changePageSize()">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+</div>
+
+</div>
+
 

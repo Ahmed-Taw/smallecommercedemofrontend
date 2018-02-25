@@ -69,6 +69,7 @@ LoggedIn(){
   private decodeToken(){
     let helper = new JwtHelper();
     let token = localStorage.getItem('JWTKey');
+    if(token)
     return helper.decodeToken(token);
   }
 

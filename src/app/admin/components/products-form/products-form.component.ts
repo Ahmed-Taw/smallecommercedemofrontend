@@ -2,11 +2,12 @@ import { Product } from '../../../shared/models/Product';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../../shared/services/category.service';
 import { FormsModule } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ProductService } from '../../../shared/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from '../../../shared/models/Category';
 import { localErrorHandler } from '../../../shared/helpers/HttPErrorHandler';
+import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'products-form',
@@ -23,6 +24,8 @@ product :  Product ={
 };
 id
 categories: Category[]=[];
+images:any[];
+@ViewChild('photoItem')photoItem: ElementRef;
  
   constructor(private categoryService: CategoryService,
                   private productsService: ProductService,
@@ -41,7 +44,8 @@ categories: Category[]=[];
       });
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
 if(this.id){
-this.productsService.getproduct(this.id).subscribe(result=>{
+this.productsService.getproduct(this.id).subscribe(response=>{
+  let result = response.json();
     this.product.title = result.title;
     this.product.price = result.price;
     this.product.image = result.image;
@@ -70,4 +74,23 @@ this.productsService.getproduct(this.id).subscribe(result=>{
     }
   }
 
+  uploadImage(){
+let nativeelemnt :HTMLInputElement = this.photoItem.nativeElement;
+let photo = nativeelemnt.files[0];
+nativeelemnt.value = '';
+this.productsService.uploadImage(this.id,photo).subscribe(response=>{
+console.log(response);
+});
+
+  }
+
+  ShowImages($event: NgbTabChangeEvent)
+{
+  console.log($event.nextId);
+  if($event.nextId == "images-tab" && !this.images){
+   this.productsService.getImages(this.id).subscribe(response=>{
+     this.images = response.json();
+   });
+  }
+}
 }

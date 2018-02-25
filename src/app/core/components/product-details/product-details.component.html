@@ -1,0 +1,37 @@
+   <div class="row">
+    <div class="right-div">
+        <ngb-carousel style="width:400px; height:300px;">
+            <ng-template ngbSlide *ngFor="let image of images">
+              <img [src] = "image.fileName" class="img-responsive" alt="Random first slide">
+              <!-- <div class="carousel-caption">
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </div> -->
+            </ng-template>
+            
+          </ngb-carousel>
+           <!-- <app-product-card *ngIf="product" [product]="product"></app-product-card>  -->
+    </div>
+    <div class="left-div">
+        <div class="card mb-3">
+            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+            <div class="card-block">
+              <h4 class="card-title" *ngIf="product">{{product.title}}</h4>
+              <h5 class="card-text" *ngIf="product">{{product.price | currency:USD:"symbole"}}</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This Certified Refurbished product is manufacturer refurbished, shows limited or no wear, and includes all original accessories plus a 90-day warranty
+                  Get reliable performance from the Intel i7-7700HQ Quad-Core processor 2.80GHz (Turbo up to 3.80GHz) 6MB Cashe
+                  8GB memory - For multitasking power, with 1TB 7200RPM+128GB PCIE MR hard drive has plenty of space to store your digital albums, music library and rich media files
+                  Enjoy a 15.6" ISP FHD display with 1920 X 1080 resolution that showcases movies and games in stunning clarity
+                  Connect to a broadband modem or router with wired Ethernet, or wirelessly connect to a Wi-Fi signal or hotspot with the built-in 802.11ac wireless connection
+                  Gamers can now experience the power and performance of NVIDIA-GeForce GTX 1050 Ti 4GB GDDR5
+                  Full-size island-style backlit keyboard with numeric keypad</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+            <div class="card-footer">
+                <app-product-card-actions [product]="product">
+
+                </app-product-card-actions>
+            </div>       
+          </div>
+        </div>
+      </div>

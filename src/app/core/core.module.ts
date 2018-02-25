@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NoPermissionComponent } from './components/no-permission/no-permission.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,10 @@ import { NoPermissionComponent } from './components/no-permission/no-permission.
       {
         path:'LogOut',
         component:LogoutComponent,
+      },
+      {
+        path:'products/:id',
+        component:ProductDetailsComponent,
       },
       {
         path:'LogIn',
@@ -46,7 +51,8 @@ import { NoPermissionComponent } from './components/no-permission/no-permission.
     ProductsFilterComponent,
     ProductslistComponent,
     NotFoundComponent,
-    NoPermissionComponent
+    NoPermissionComponent,
+    ProductDetailsComponent
   ],
   exports:[
     NavBarComponent

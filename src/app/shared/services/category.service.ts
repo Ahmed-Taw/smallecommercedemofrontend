@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class CategoryService {
 
-  url = "http://localhost:4566/api/Categories"
+  url = "http://localhost:4566/api/Products/Categories"
 
   constructor(private http:Http) { }
 

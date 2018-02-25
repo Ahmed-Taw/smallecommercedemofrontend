@@ -12,7 +12,7 @@ export const ADD_TO_CART="add to cart";
 
 export const CHANGE_QUANTITY ="";
 
-export const DELETE_ITEM ="";
+export const DELET_ITEM ="";
 export const REMOVE_FROM_CART="remove item from cart";
 
 export const CLEAR_CART="clear cart";

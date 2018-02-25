@@ -13,30 +13,31 @@ import { Product } from '../../models/Product';
 export class ProductCardComponent implements OnInit,OnDestroy {
  @Input() showactions;
  @Input() product:Product;
-cartItem;
-cartid;
-subscribtion;
-  constructor(private shoppingCartService:ShoopingCartService,private ngredux:NgRedux<IAppState>) 
+ minimumValue = 7;
+// cartItem;
+// cartid;
+// subscribtion;
+  constructor() 
   {
     
    }
 
   ngOnInit() {
-    this.subscribtion = this.ngredux.select(state=>
-      {
-        this.cartItem = state.cart.getItem(this.product.id);
-      }).subscribe()
+    // this.subscribtion = this.ngredux.select(state=>
+    //   {
+    //     this.cartItem = state.cart.getItem(this.product.id);
+    //   }).subscribe()
   }
 
-  async addToCart(){
-    await this.shoppingCartService.addToCart(this.product);
+  // async addToCart(){
+  //   await this.shoppingCartService.addToCart(this.product);
 
-  }
-  removeFromCart(){
-    this.shoppingCartService.removefromCart(this.product);
-  }
+  // }
+  // removeFromCart(){
+  //   this.shoppingCartService.removefromCart(this.product);
+  // }
 
   ngOnDestroy(): void {
-    this.subscribtion.unsubscribe();
+    //this.subscribtion.unsubscribe();
   }
 }

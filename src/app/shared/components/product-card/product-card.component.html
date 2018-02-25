@@ -1,20 +1,18 @@
- <div class="card">
-        <img class="card-img-top" [src]="product.image" alt="Card image cap">
-   <div class="card-block">
-         <h4 class="card-title">{{product.title}}</h4>
-          <h5 class="card-title">${{product.price}}</h5>
-   </div>
-   <div class="card-footer" *ngIf="showactions">
-      <button *ngIf="!cartItem; else quantitytemp" class="btn btn-secondry btn-block" (click)="addToCart()">Add to Cart</button>
-      
-      <ng-template #quantitytemp>
-      <!-- <div class="row">
-            <button class="btn btn-secondry btn-block col-2" (click)="removeFromCart(product)">-</button>
-            <div class="col text-center">{{cartItem.quantity}} in cart</div>
-            <button  class="btn btn-secondry btn-block col-2" (click)="addToCart(product)">+</button>
-      </div> -->
-      <app-productquantity [product]="product" [largetextarea]="true"></app-productquantity>
-      </ng-template>
-      
-   </div>
-</div>
+      <div class="card">
+                  <img class="card-img-top" [src]="product.image" alt="Card image cap">
+             <div class="card-block">
+                   <h4 class="card-title">{{product.title}}</h4>
+                    <h5 class="card-title">${{product.price}}</h5>
+                    <p style="color:red" *ngIf="product.avilableInStock < minimumValue"> only {{product.avilableInStock}} left in stock</p>
+             </div>
+              <!-- <div class="card-footer" *ngIf="showactions"> -->
+                <!-- <button *ngIf="!cartItem; else quantitytemp" class="btn btn-secondry btn-block" (click)="addToCart()">Add to Cart</button>
+                
+                <ng-template #quantitytemp>
+
+                <app-productquantity [product]="product" [largetextarea]="true"></app-productquantity>
+                </ng-template> -->
+              
+                
+             <!-- </div> -->
+          </div>

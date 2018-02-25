@@ -1,0 +1,6 @@
+<!-- <div class="card-footer"> -->
+<button *ngIf="!cartItem; else quantitytemp" class="btn btn-secondry btn-block" (click)="addToCart()">Add to Cart</button>
+    <ng-template #quantitytemp>
+      <app-productquantity *ngIf="product" [product]="product" [largetextarea]="true"></app-productquantity>
+      </ng-template>
+<!-- </div> -->

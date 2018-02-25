@@ -1,0 +1,16 @@
+.left-div {
+    float: right;
+    width: 35%;
+    height: 350px;
+    margin-left: 18px;
+     margin-top: 20px;
+}
+.right-div {
+    float: left;
+    width: 50%;
+    margin-left: 18px;
+    margin-top: 20px;
+}
+.card-footer{
+    padding: 0;
+}
