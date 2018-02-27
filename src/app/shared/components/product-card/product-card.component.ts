@@ -1,5 +1,5 @@
 import { ShoppingCartItem } from '../../models/shoppingCartItem';
-import { NgRedux,select } from 'ng2-redux';
+import { NgRedux, select } from 'ng2-redux';
 import { ShoopingCartService } from '../../services/Shopping-Cart.service';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { IAppState, ADD_TO_CART, CREATE_CART, CHANGE_QUANTITY, DELET_ITEM } from '../../reduxstore/Store';
@@ -10,16 +10,15 @@ import { Product } from '../../models/Product';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent implements OnInit,OnDestroy {
+export class ProductCardComponent implements OnInit, OnDestroy {
  @Input() showactions;
- @Input() product:Product;
+ @Input() product: Product;
  minimumValue = 7;
 // cartItem;
 // cartid;
 // subscribtion;
-  constructor() 
-  {
-    
+  constructor() {
+
    }
 
   ngOnInit() {
@@ -38,6 +37,6 @@ export class ProductCardComponent implements OnInit,OnDestroy {
   // }
 
   ngOnDestroy(): void {
-    //this.subscribtion.unsubscribe();
+    // this.subscribtion.unsubscribe();
   }
 }

@@ -10,19 +10,19 @@ import { ShoopingCartService } from '../../../shared/services/Shopping-Cart.serv
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-@select(s=>s.cart.shoppingCartItems)cartItems:ShoppingCartItem[];
- @select(s=>s.cart.totalAmount)totalamount;
- @select(s=>s.cart.totalItems)totalitems;
- 
-  constructor(private ngredux:NgRedux<IAppState>
-             ,private shoppingCartService: ShoopingCartService) {
-   
+@select(s => s.cart.shoppingCartItems)cartItems: ShoppingCartItem[];
+ @select(s => s.cart.totalAmount)totalamount;
+ @select(s => s.cart.totalItems)totalitems;
+
+  constructor(private ngredux: NgRedux<IAppState>
+             , private shoppingCartService: ShoopingCartService) {
+
    }
 
   ngOnInit() {
 
   }
-  clearshoppingCart(){
+  clearshoppingCart() {
     this.shoppingCartService.clearShoppingCart();
   }
 }

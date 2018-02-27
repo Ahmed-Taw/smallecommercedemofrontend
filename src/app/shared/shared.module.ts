@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { CategoryService } from './services/category.service';
-import { ProductquantityComponent } from './components/productquantity/productquantity.component';
+import { ProductQuantityComponent } from './components/productquantity/productquantity.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,41 +15,48 @@ import { NgReduxModule } from 'ng2-redux';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductCardActionsComponent } from './components/product-card-actions/product-card-actions.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Interceptor } from '../interceptor';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     NgReduxModule,
     RouterModule,
     NgbModule.forRoot()
+    // EffectsModule.([effects]),
+    // StoreModule.provideStore([
+    //   rootReducer
+   // ])
   ],
   declarations: [
     ProductCardComponent,
-    ProductquantityComponent,
+    ProductQuantityComponent,
     ProductCardActionsComponent,
     PaginationComponent
   ],
-  exports:[
+  exports: [
     ProductCardComponent,
-    ProductquantityComponent,
+    ProductQuantityComponent,
     ProductCardActionsComponent,
     PaginationComponent,
     CommonModule,
     FormsModule,
-    HttpModule,
     NgReduxModule,
     RouterModule,
     NgbModule.forRoot().ngModule
   ],
-  providers:[
+  providers: [
     ShoopingCartService,
     ProductService,
     CategoryService,
     AuthService,
     OrdersService,
-    AuthGuard
+    AuthGuard,
+    {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}
   ]
 
 })

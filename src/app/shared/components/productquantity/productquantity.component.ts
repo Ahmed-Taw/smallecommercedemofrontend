@@ -8,30 +8,29 @@ import { NgRedux } from 'ng2-redux';
   templateUrl: './productquantity.component.html',
   styleUrls: ['./productquantity.component.css']
 })
-export class ProductquantityComponent implements OnInit,OnDestroy {
+export class ProductQuantityComponent implements OnInit, OnDestroy {
 @Input()product;
 @Input()smalltextarea;
 @Input()largetextarea;
 cartItem;
 subscribtion;
-  constructor(private shoppingCartService:ShoopingCartService,private ngredux:NgRedux<IAppState>) { }
+  constructor(private shoppingCartService: ShoopingCartService, private ngredux: NgRedux<IAppState>) { }
 
  async ngOnInit() {
- this.subscribtion =   await this.ngredux.select(state=>
-      {
+ this.subscribtion =   await this.ngredux.select(state => {
         this.cartItem = state.cart.getItem(this.product.id);
-      }).subscribe()
+      }).subscribe();
   }
-  async addToCart(){
-    //let newcartItem =  {productid:this.product.id as number,shoopingCartId:this.cartid,quantity:1,product:this.product}
+  async addToCart() {
+    // let newcartItem =  {productid:this.product.id as number,shoopingCartId:this.cartid,quantity:1,product:this.product}
     await this.shoppingCartService.addToCart(this.product);
 
   }
- async removeFromCart(){
+ async removeFromCart() {
     await this.shoppingCartService.removefromCart(this.product);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscribtion.unsubscribe();
   }
 }

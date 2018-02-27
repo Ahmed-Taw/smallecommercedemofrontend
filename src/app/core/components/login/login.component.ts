@@ -10,16 +10,16 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService:AuthService,private route: Router,private activatedroute:ActivatedRoute) { }
+  constructor(private authService: AuthService, private route: Router, private activatedroute: ActivatedRoute) { }
 
   ngOnInit() {
   }
-  Login(form: NgForm){
+  Login(form: NgForm) {
     console.log(form.controls['email'].value);
-    this.authService.login(form.controls['email'].value,form.controls['pass'].value).subscribe(result=>{
+    this.authService.login(form.controls['email'].value, form.controls['pass'].value).subscribe(result => {
 
-if(result){
-  let returnurl = this.activatedroute.snapshot.queryParamMap.get('returnUrl') ||'/';
+if (result) {
+  const returnurl = this.activatedroute.snapshot.queryParamMap.get('returnUrl') || '/';
   this.route.navigate([returnurl]);
 }
     });

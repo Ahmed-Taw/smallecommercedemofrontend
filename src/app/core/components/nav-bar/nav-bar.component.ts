@@ -10,17 +10,17 @@ import { AuthService } from '../../../shared/services/auth.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-@select(s=>s.cart.totalItems)cartItemsCount;
+@select(s => s.cart.totalItems)cartItemsCount;
 username;
 
-  constructor(private authService: AuthService, private ngredux:NgRedux<IAppState>) { 
-    
+  constructor(private authService: AuthService, private ngredux: NgRedux<IAppState>) {
+
   }
 
   ngOnInit() {
-  this.username = this.authService.getloggedInUserName()?
-                    this.authService.getloggedInUserName():
-                    "User Name";
+  this.username = this.authService.getloggedInUserName() ?
+                    this.authService.getloggedInUserName() :
+                    'User Name';
 
   }
 }

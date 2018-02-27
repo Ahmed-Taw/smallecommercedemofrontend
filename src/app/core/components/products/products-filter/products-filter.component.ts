@@ -10,13 +10,13 @@ import { Input } from '@angular/core';
 })
 export class ProductsFilterComponent implements OnInit {
 
-  categories:Category[] = [];
- @Input('activecategory') activecategoryid:number;
- @Input('navigateto') navigateTo:string;
-  constructor(private categoryService:CategoryService) { }
+  categories: Category[] = [];
+ @Input('activecategory') activecategoryid: number;
+ @Input('navigateto') navigateTo: string;
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.categoryService.getCategories().subscribe(result=> this.categories = result);
+    this.categoryService.getCategories().subscribe(result => this.categories = result as Category[]);
   }
 
 }

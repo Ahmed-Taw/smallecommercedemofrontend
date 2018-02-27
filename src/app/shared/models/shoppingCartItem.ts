@@ -1,13 +1,13 @@
-import { Product } from "./Product";
+import { Product } from './Product';
 
-export class ShoppingCartItem{
+export class ShoppingCartItem {
     shoopingCartId;
     productid;
     product: Product;
     quantity;
-    
-    get totalPrice(){
+
+    get totalPrice() {
         return this.product.price * this.quantity;
     }
-  
+
 }

@@ -15,7 +15,7 @@ import { IAppState, INITIAL_STATE, rootReducer } from './shared/reduxstore/Store
 
 @NgModule({
   declarations: [
-    AppComponent  
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -29,13 +29,11 @@ import { IAppState, INITIAL_STATE, rootReducer } from './shared/reduxstore/Store
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private ngRedux:NgRedux<IAppState>,private shoppingcartservice:ShoopingCartService){
-      let shoppingcartid= localStorage.getItem('scartid')
-      if(shoppingcartid == null)
-      {
-        this.ngRedux.configureStore(rootReducer,INITIAL_STATE);
-      }else
-      {
+  constructor(private ngRedux: NgRedux<IAppState>, private shoppingcartservice: ShoopingCartService) {
+      const shoppingcartid = localStorage.getItem('scartid');
+      if (shoppingcartid == null) {
+        this.ngRedux.configureStore(rootReducer, INITIAL_STATE);
+      } else {
         this.shoppingcartservice.loadCartItems();
       }
     }

@@ -3,25 +3,25 @@ import { Order } from '../models/Order';
 import { ShoppingCart } from '../models/ShoppingCart';
 import { ShoppingCartItem } from '../models/shoppingCartItem';
 
-export function ConvertCartToOrder(shoppingCartItems:ShoppingCartItem[]):Order{
-let Order:Order={
-    name:"",
-    address:"",
-    phone:"",
-    userId:0,
-    details:[]
+export function ConvertCartToOrder(shoppingCartItems: ShoppingCartItem[]): Order {
+const order: Order = {
+    name: '',
+    address: '',
+    phone: '',
+    userId: 0,
+    details: []
 };
-for(let cartItem of shoppingCartItems){
+for (const cartItem of shoppingCartItems) {
 
-    let orderdetail: OrderDetail={
+    const orderdetail: OrderDetail = {
 
         productId: cartItem.productid,
          quantity: cartItem.quantity
     };
 
-    
-    Order.details.push(orderdetail);
+
+    order.details.push(orderdetail);
 }
-console.log(Order)
-return Order;
+console.log(order);
+return order;
 }

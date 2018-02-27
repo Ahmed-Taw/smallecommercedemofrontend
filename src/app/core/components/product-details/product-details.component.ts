@@ -14,36 +14,23 @@ export class ProductDetailsComponent implements OnInit {
   id;
   product;
   images;
-  // :  Product={
-  //   id:0,
-  //   title:"",
-  //   image:"",
-  //   price:0,
-  //   categoryId:-1
-  // };
   constructor(private productsService: ProductService,
-              private activatedRoute:ActivatedRoute,
-            private shoppingCartService: ShoopingCartService) {
-
-              
-             }
-
+              private activatedRoute: ActivatedRoute,
+            private shoppingCartService: ShoopingCartService) {}
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    if(this.id){
-      //this.product.id = this.id;
-      this.productsService.getproduct(this.id).subscribe(result=>{
-          this.product = result.json();
-      },error=>{localErrorHandler(error)})
+    if (this.id) {
+      this.productsService.getproduct(this.id).subscribe(result => {
+          this.product = result as Product;
+      }, error => {localErrorHandler(error); });
 
-      this.productsService.getImages(this.id).subscribe(response=>{
-        this.images = response.json();
-       
+      this.productsService.getImages(this.id).subscribe(response => {
+      this.images = response;
       });
   }
   }
 
-  async addToCart(){
+  async addToCart() {
     await this.shoppingCartService.addToCart(this.product);
 
   }

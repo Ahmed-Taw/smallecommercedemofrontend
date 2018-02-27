@@ -15,10 +15,10 @@ import { OnDestroy } from '@angular/core';
 })
 export class ProductslistComponent implements OnInit {
   totalItems;
-  query:any={
-    pageSize:5,
-    pageNum:1,
-    categoryId:0
+  query: any = {
+    pageSize: 5,
+    pageNum: 1,
+    categoryId: 0
    };
   //  query:any={
   //   pageSize:5,
@@ -26,40 +26,41 @@ export class ProductslistComponent implements OnInit {
   //   sortBy:'',
   //   isSortAsc:true
   //  };
-  products : Product[];
-  filterdProducts:Product[];
-  activeCategoryId; 
-  constructor(private productsService:ProductService
-    ,private route:ActivatedRoute
-    ,private ngRedux:NgRedux<IAppState>) { 
-      
+  products: Product[];
+  filterdProducts: Product[];
+  activeCategoryId;
+  constructor(private productsService: ProductService
+    , private route: ActivatedRoute
+    , private ngRedux: NgRedux<IAppState>) {
+
     }
 
   async ngOnInit() {
     await this.route.queryParamMap
-    .subscribe(query=>{
+    .subscribe(query => {
      this.activeCategoryId = query.get('category');
-     if(this.activeCategoryId){
+     if (this.activeCategoryId) {
        this.query.categoryId = this.activeCategoryId;
-       this.query.pageNum =1;
-      
-     }else{
-      this.query.categoryId =0;
+       this.query.pageNum = 1;
+
+     } else {
+      this.query.categoryId = 0;
      }
      this.populateData();
         });
   }
 
-  private async populateData(){
+  private async populateData() {
     console.log(this.query);
-    await this.productsService.getproducts(this.query).subscribe(result=>{
+    await this.productsService.getproducts(this.query).subscribe(response => {
+      const result = response as {products: Product[], productsTotalCount: number };
       this.products = result.products;
-      this.totalItems = result.productsTotalCount;    
+      this.totalItems = result.productsTotalCount;
       });
   }
 
 
-  onPageChange(page){
+  onPageChange(page) {
     this.query.pageNum = page;
     this.populateData();
 

@@ -9,9 +9,9 @@ import { Product } from '../../../shared/models/Product';
 })
 export class HomeComponent implements OnInit {
 
-  products : Product[];
-  activeCategoryId:Number; 
-  constructor(private productsService:ProductService) { }
+  products: Product[];
+  activeCategoryId: Number;
+  constructor(private productsService: ProductService) { }
 
   ngOnInit() {
     // this.productsService.getproducts().subscribe(result=>{

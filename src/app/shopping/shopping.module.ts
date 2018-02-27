@@ -9,15 +9,15 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     RouterModule.forChild([
       {
-        path:'ShoppingCart',
-        component:ShoppingCartComponent,
+        path: 'ShoppingCart',
+        component: ShoppingCartComponent,
       }
     ])
   ],
   declarations: [
     ShoppingCartComponent
   ],
-  providers:[
+  providers: [
 
   ]
 })

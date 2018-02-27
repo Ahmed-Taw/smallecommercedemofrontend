@@ -13,28 +13,28 @@ import { AuthGuard } from '../shared/services/AuthGuard.service';
     SharedModule,
     RouterModule.forChild([
       {
-        path:'admin/products/new',
-        component:ProductsFormComponent,
-        canActivate:[AuthGuard,AdminGuard]    
+        path: 'admin/products/new',
+        component: ProductsFormComponent,
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
-        path:'admin/products/:id',
-        component:ProductsFormComponent,
-        canActivate:[AuthGuard,AdminGuard]    
-      },{
-        path:'admin/Products',
-        component:ProductsComponent,
-        canActivate:[AuthGuard,AdminGuard]        
+        path: 'admin/products/:id',
+        component: ProductsFormComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      }, {
+        path: 'admin/Products',
+        component: ProductsComponent,
+        canActivate: [AuthGuard, AdminGuard]
       }
     ])
 
-    
+
   ],
   declarations: [
     ProductsComponent,
     ProductsFormComponent
   ],
-  providers:[
+  providers: [
     AdminGuard
   ]
 })

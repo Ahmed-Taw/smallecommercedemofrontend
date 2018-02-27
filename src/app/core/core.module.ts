@@ -19,28 +19,28 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     SharedModule,
     RouterModule.forChild([
       {
-        path:'',
-        component:ProductslistComponent
+        path: '',
+        component: ProductslistComponent
       },
       {
-        path:'LogOut',
-        component:LogoutComponent,
+        path: 'LogOut',
+        component: LogoutComponent,
       },
       {
-        path:'products/:id',
-        component:ProductDetailsComponent,
+        path: 'products/:id',
+        component: ProductDetailsComponent,
       },
       {
-        path:'LogIn',
-        component:LoginComponent
+        path: 'LogIn',
+        component: LoginComponent
       },
       {
-        path:'NoPermission',
-        component:NoPermissionComponent
+        path: 'NoPermission',
+        component: NoPermissionComponent
       },
       {
-        path:"**",
-        component:NotFoundComponent
+        path: '**',
+        component: NotFoundComponent
       }
     ])
   ],
@@ -54,7 +54,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     NoPermissionComponent,
     ProductDetailsComponent
   ],
-  exports:[
+  exports: [
     NavBarComponent
   ]
 })

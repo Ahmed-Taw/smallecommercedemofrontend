@@ -12,14 +12,14 @@ import { AuthGuard } from '../shared/services/AuthGuard.service';
     SharedModule,
     RouterModule.forChild([
       {
-        path:"CheckOut",
-        component:CheckOutComponent,
-        canActivate:[AuthGuard]
+        path: 'CheckOut',
+        component: CheckOutComponent,
+        canActivate: [AuthGuard]
       },
             {
-        path:'MyOrders',
-        component:OrdersComponent,
-        canActivate:[AuthGuard]
+        path: 'MyOrders',
+        component: OrdersComponent,
+        canActivate: [AuthGuard]
       }
     ])
   ],
